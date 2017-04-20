@@ -68,8 +68,8 @@ public class EasyDataObserver extends RecyclerView.AdapterDataObserver {
         int count;
         if (recyclerView.getAdapter() instanceof RecyclerArrayAdapter) {
             count = ((RecyclerArrayAdapter) recyclerView.getAdapter()).getCount();
-            //首页加载不足EACH_PAGE_COUNT,显示加载完成
-            if (mEachPageItemCount > count)
+            //加载不是EACH_PAGE_COUNT整数倍,显示加载完成
+            if (count % mEachPageItemCount != 0)
                 ((RecyclerArrayAdapter) recyclerView.getAdapter()).stopMore();
         } else {
             count = recyclerView.getAdapter().getItemCount();
